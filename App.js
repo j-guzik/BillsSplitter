@@ -1,22 +1,68 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import FirebaseConfig from "./firebase/FirebaseConfig";
+import React from "react";
+import Providers from './navigation';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Bills Splitter!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+FirebaseConfig();
+
+const App = () => {
+  return <Providers />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ff9d00',
-    // '#6139d8',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
+
+
+
+
+
+
+
+
+// import 'react-native-gesture-handler';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createStackNavigator } from '@react-navigation/stack';
+// import { StatusBar } from "expo-status-bar";
+// import React, {  useEffect } from "react";
+// import {
+//   StyleSheet,
+//   Text,
+//   View,
+//   TextInput,
+//   TouchableOpacity,
+// } from "react-native";
+// import LoginScreen from './screens/LoginScreen'
+// import OnboardingScreen from './screens/OnboardingScreen';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+
+// const  AppStack = createStackNavigator(); 
+
+// export default function App() {
+//   const [isFirstLaunch, setIsFirstLaunch] = React.useState(null);
+
+//   useEffect(() =>{
+//     AsyncStorage.getItem('alreadyLaunched').then(value => {
+//       if(value == null){
+//         AsyncStorage.setItem('alreadyLaunched', 'true');
+//         setIsFirstLaunch(true);
+//       } else {
+//         setIsFirstLaunch(false);
+//       }
+//     })
+//   }, []);
+
+//   if(isFirstLaunch === null){
+//     return null;
+//   } else if(isFirstLaunch === true){
+//     return (
+//       <NavigationContainer>
+//         <AppStack.Navigator headerMode="none">
+//           <AppStack.Screen name="Onboarding" component={OnboardingScreen} />
+//           <AppStack.Screen name="Login" component={LoginScreen} />
+//         </AppStack.Navigator>
+//       </NavigationContainer>
+//     );
+//   } else {
+//     return <LoginScreen/>;
+// }
+
+// }
